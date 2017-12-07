@@ -130,7 +130,7 @@ var scrollVis = function () {
    *
    */
 
-  var textElem = d3.select("#vis").text("Step 0"); 
+    var textElem = d3.select("#vis").append("text").text("Step 0"); 
 
   function step0() {
       console.log("step 0");
@@ -150,6 +150,7 @@ var scrollVis = function () {
 
   function step2() {
       console.log("step 2");
+      d3.select("#vis").selectAll("svg").remove();
       textElem.text("Step 2");
       d3.select("#vis").append("svg").attr("width",600).attr("height",600)
           .append("circle").attr("cx",300).attr("cy",300).attr("r",10);
@@ -159,7 +160,7 @@ var scrollVis = function () {
       console.log("step 3");
       textElem.text("Step 3");
       d3.select("#vis").select("svg").select("circle")
-          .transition().duration(10000).attr("cx",400);
+          .transition().duration(100).attr("cx",400);
   }    
 
   /**
