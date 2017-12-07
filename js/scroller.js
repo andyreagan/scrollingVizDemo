@@ -79,6 +79,7 @@ function scroller() {
       }
       sectionPositions.push(top - startPos);
     });
+      console.log(sectionPositions);
     containerStart = container.node().getBoundingClientRect().top + window.pageYOffset;
   }
 
@@ -90,7 +91,8 @@ function scroller() {
    *
    */
   function position() {
-    var pos = window.pageYOffset - 10 - containerStart;
+      var pos = window.pageYOffset - 10 - containerStart;
+      console.log(pos);
     var sectionIndex = d3.bisect(sectionPositions, pos);
     sectionIndex = Math.min(sections.size() - 1, sectionIndex);
 

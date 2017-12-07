@@ -101,7 +101,8 @@ var scrollVis = function () {
     // time the active section changes
     activateFunctions[step++] = step0;
     activateFunctions[step++] = step1;
-    activateFunctions[step++] = step2;
+      activateFunctions[step++] = step2;
+    activateFunctions[step++] = step3;      
 
     // updateFunctions are called while
     // in a particular section to update
@@ -129,25 +130,37 @@ var scrollVis = function () {
    *
    */
 
-  function step0() {
-    console.log("step 0");
-      d3.select("#vis")
+  var textElem = d3.select("#vis").text("Step 0"); 
 
-      .call(treemap.tile(d3.treemapResquarify));
+  function step0() {
+      console.log("step 0");
+      textElem.text("Step 0");
+      d3.select("#vis")
+          .call(treemap.tile(d3.treemapResquarify));
 
     // d3.select("#vis").text("Step 0");
   }
 
   function step1() {
-    console.log("step 1");
-    d3.select("#vis")
-      .call(treemap.tile(d3.treemapSliceDice));
+      console.log("step 1");
+      textElem.text("Step 1");      
+      d3.select("#vis")
+          .call(treemap.tile(d3.treemapSliceDice));
   }
 
   function step2() {
-    console.log("step 2");
-    d3.select("#vis").text("Step 2");
+      console.log("step 2");
+      textElem.text("Step 2");
+      d3.select("#vis").append("svg").attr("width",600).attr("height",600)
+          .append("circle").attr("cx",300).attr("cy",300).attr("r",10);
   }
+
+  function step3() {
+      console.log("step 3");
+      textElem.text("Step 3");
+      d3.select("#vis").select("svg").select("circle")
+          .transition().duration(10000).attr("cx",400);
+  }    
 
   /**
    * activate -
